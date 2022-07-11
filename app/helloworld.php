@@ -5,7 +5,8 @@ $getTime = array();
 $loopCount = range( 1, 5000 );
 
 $getTime[ 'time' ][ 0 ] = microtime( true );
-for ( $i = 0; $i < count( $loopCount ); ++$i ) {}
+$cnt_tmp = count( $loopCount );
+for ( $i = 0; $i < $cnt_tmp; ++$i ) {}
 $getTime[ 'time' ][ 1 ] = microtime( true );
 
 // result
