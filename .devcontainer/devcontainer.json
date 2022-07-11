@@ -1,0 +1,16 @@
+{
+    "name": "php_xdebug_app",           // vscodeに表示される接続先名
+    "dockerComposeFile": [              // docker-compose.ymlのパスを記載
+        "../docker-compose.yml"
+    ],
+    "service": "php",                   // docker-compose.yml に記載しているサービス名で起動したいコンテナ
+    "workspaceFolder": "/var/www/html", // 作業するパス(Docker側)
+    "extensions": [                     // コンテナ内で使用したいvscode拡張機能、好みに合わせて設定してください。
+        "felixfbecker.php-debug",
+        "coenraads.bracket-pair-colorizer-2",
+        "oderwat.indent-rainbow",
+        "streetsidesoftware.code-spell-checker",
+        "mosapride.zenkaku",
+        "xdebug.php-debug"
+    ]
+}
