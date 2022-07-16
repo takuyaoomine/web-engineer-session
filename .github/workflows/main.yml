@@ -32,9 +32,9 @@ jobs:
       - run: |
           response=`curl http://localhost:8000/api.php?num=5`
           test $(echo $response | jq '.status') = "\"OK\""; echo $?
-      - if: failure()
-        run: echo failure
-        continue-on-error: true
+#       - if: failure()
+#         run: echo failure
+#         continue-on-error: true
           
           
         
