@@ -28,10 +28,10 @@ jobs:
         run: docker-compose up -d
 
       # TEST : curl request 1
-      - name: CHECK Validation
-      - run: |
-          response=`curl http://localhost:8000/api.php?num=5`
-          test $(echo $response | jq '.status') = "\"OK\""; echo $?
+#       - name: CHECK Validation
+#       - run: |
+#           response=`curl http://localhost:8000/api.php?num=5`
+#           test $(echo $response | jq '.status') = "\"OK\""; echo $?
 #       - if: failure()
 #         run: echo failure
 #         continue-on-error: true
