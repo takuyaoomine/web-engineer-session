@@ -4,7 +4,7 @@ WORKDIR /var/www/html
 
 # xdebug install
 RUN apt-get update \
-  && apt-get install -y libonig-dev libzip-dev unzip \
+  && apt-get install -y libonig-dev libzip-dev unzip jq \
   && pecl install xdebug \
   && docker-php-ext-enable xdebug
 
