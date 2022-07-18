@@ -7,7 +7,7 @@ if(isset($_GET["num"]) && !preg_match('/[^0-9]/', $_GET["num"])) {
     $param = htmlspecialchars($_GET["num"]);
     // メイン処理
     $arr["status"] = "OK";
-    $arr["num"] = (string)((int)$param * 3); // num
+    $arr["num"] = (string)((int)$param); // num
     $arr["num_x_num"] = (string)((int)$param * (int)$param); // num * num
     $arr["num_x_num_x_num"] = (string)((int)$param * (int)$param * (int)$param); // num * num
 
