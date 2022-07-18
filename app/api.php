@@ -9,7 +9,7 @@ if(isset($_GET["num"]) && !preg_match('/[^0-9]/', $_GET["num"])) {
     $arr["status"] = "OK";
     $arr["num"] = (string)((int)$param); // num
     $arr["num_x_num"] = (string)((int)$param * (int)$param); // num * num
-    $arr["num_x_num_x_num"] = (string)((int)$param * (int)$param * (int)$param); // num * num
+    $arr["num_x_num_x_num"] = (string)((int)$param * (int)$param * (int)$param); // num * num * num
 
 } else {
     // paramの値が不適ならstatusをnoにしてプログラム終了
