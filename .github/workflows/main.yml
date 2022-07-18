@@ -28,11 +28,11 @@ jobs:
         run: docker-compose up -d
 
       # TEST : curl request 1
-      - name: CHECK Validation
+      - name: CHECK caluclation
         run: |
           response=`curl http://localhost:8000/api.php?num=3`
           echo $response
-          actual=$(echo "$response" | jq -r '[.status, .num, ."num_x_num", "num_x_num_x_num"]|join(" ")')
+          actual=$(echo "$response" | jq -r '[.status, .num, .num_x_num, .num_x_num_x_num]|join(" ")')
           expect=$(echo 'OK 3 9 27')
           
           echo "actual_value: $actual" 
@@ -43,5 +43,19 @@ jobs:
         run: echo failure
         continue-on-error: true
           
+      # TEST : curl request 2
+      - name: CHECK validation
+        run: |
+          response=`curl http://localhost:8000/api.php?num=A`
+          echo $response
+          actual=$(echo "$response" | jq -r '[.status, .num, .num_x_num, .num_x_num_x_num]|join(" ")')
+          expect=$(echo 'NG')
           
+          echo "actual_value: $actual" 
+          echo "expect_value: $expect"
+          
+          test "$expect" == "$actual"; echo $?          
         
+      - if: failure()
+        run: echo failure
+        continue-on-error: true
