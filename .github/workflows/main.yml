@@ -27,6 +27,17 @@ jobs:
       - name: up docker container
         run: docker-compose up -d
 
-      # curl request
-      - name: GET num be a number
-        run: curl http://localhost:8000/api.php?num=5
+      # TEST : curl request 1
+      - name: CHECK Validation
+        run: |
+          response=`curl http://localhost:8000/api.php?num=3`
+          echo $response
+          actual=$(echo "$response" | jq -r '[.status, .num_x_3, ."num_+_num"]|join(" ")')
+          expect=$(echo 'OK 15 25')
+          test "$expect" == "$actual"; echo $?
+      - if: failure()
+        run: echo failure
+        continue-on-error: true
+          
+          
+        
