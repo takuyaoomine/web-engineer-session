@@ -48,7 +48,7 @@ jobs:
         run: |
           response=`curl http://localhost:8000/api.php?num=A`
           echo $response
-          actual=$(echo "$response" | jq -r '[.status]')
+          actual=$(echo "$response" | jq -r '[.status]|join(" ")')
           expect=$(echo 'NG')
           
           echo "actual_value: $actual" 
