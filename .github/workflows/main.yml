@@ -30,10 +30,10 @@ jobs:
       # TEST : curl request 1
       - name: CHECK caluclation
         run: |
-          response=`curl http://localhost:8000/api.php?num=3`
+          response=`curl http://localhost:8000/api.php?num=10`
           echo $response
           actual=$(echo "$response" | jq -r '[.status, .num, .num_x_num, .num_x_num_x_num]|join(" ")')
-          expect=$(echo 'OK 3 9 27')
+          expect=$(echo 'OK 10 100 1000')
           
           echo "actual_value: $actual" 
           echo "expect_value: $expect"
