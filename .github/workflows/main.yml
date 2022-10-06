@@ -59,19 +59,3 @@ jobs:
       - if: failure()
         run: echo failure
         continue-on-error: true
-
-      # TEST : curl request 3
-      - name: CHECK leading zeros
-        run: |
-          response=`curl http://localhost:8000/api.php?num=001`
-          echo $response
-          actual=$(echo "$response" | jq -r '[.status]|join(" ")')
-          expect=$(echo 'NG')
-
-          echo "actual_value: $actual" 
-          echo "expect_value: $expect"
-
-          test "$expect" == "$actual"; echo $?
-      - if: failure()
-        run: echo failure
-        continue-on-error: true
