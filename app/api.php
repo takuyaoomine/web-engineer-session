@@ -3,7 +3,7 @@
 header('Content-Type: application/json; charset=UTF-8');
 
 // パラメータチェック
-if(isset($_GET["num"]) && preg_match('/^0$|^([1-9][0-9]*)/', $_GET["num"])) {
+if(isset($_GET["num"]) && !preg_match('/[^0-9]/', $_GET["num"])) {
     $param = htmlspecialchars($_GET["num"]);
     // メイン処理
     $arr["status"] = "OK";
